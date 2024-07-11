@@ -42,8 +42,8 @@ services:
     env_file:
       - ./database.env
     volumes:
-      - ms-flights_db_data:/var/lib/mysql
+      - ms-flights2_db_data:/var/lib/mysql
     restart: always
 
 volumes:
-  ms-flights_db_data:
+  ms-flights2_db_data:
