@@ -18,14 +18,8 @@ exports.setup = function(options, seedLink) {
   Promise = options.Promise;
 };
 
-exports.up = function(db) {  
-  var filePath = path.join(__dirname, 'sqls', '20170420012051-create-users-table-up.sql');
-  const allowed = ["dev", "qa"];
-  if (!allowed.includes(db.internals.argv.env)) {
-    console.log(`Environment is not ${allowed}. Skipping ${filePath}`);
-    return new Promise( function( resolve, reject ) { resolve(""); });
-  }
-
+exports.up = function(db) {
+  var filePath = path.join(__dirname, 'sqls', '20240711082804-sample-data-up.sql');
   return new Promise( function( resolve, reject ) {
     fs.readFile(filePath, {encoding: 'utf-8'}, function(err,data){
       if (err) return reject(err);
@@ -40,13 +34,7 @@ exports.up = function(db) {
 };
 
 exports.down = function(db) {
-  var filePath = path.join(__dirname, 'sqls', '20170420012051-create-users-table-down.sql');
-  const allowed = ["dev", "qa"];
-  if (!allowed.includes(db.internals.argv.env)) {
-    console.log(`Environment is not ${allowed}. Skipping ${filePath}`);
-    return new Promise( function( resolve, reject ) { resolve(""); });
-  }
-  
+  var filePath = path.join(__dirname, 'sqls', '20240711082804-sample-data-down.sql');
   return new Promise( function( resolve, reject ) {
     fs.readFile(filePath, {encoding: 'utf-8'}, function(err,data){
       if (err) return reject(err);
